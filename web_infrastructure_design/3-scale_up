@@ -1,0 +1,20 @@
+# Scale Up
+
+## Diagram
+![Scale Up Infrastructure](./pictures/scalable_web_infrastructure_cluster_load_balancer.jpg)
+
+## Explanation
+This infrastructure is designed to scale efficiently by separating components onto different servers and adding an additional load balancer in a clustered configuration. This setup improves redundancy and allows for greater scalability.
+
+### Components:
+- **Clustered Load Balancers (HAProxy)**: Two load balancers working together in a clustered configuration ensure high availability. If one load balancer fails, the other continues to route traffic.
+- **Dedicated Web Server**: Handles only HTTP(S) requests and serves static files.
+- **Dedicated Application Server**: Processes the application logic and communicates with the database.
+- **Database (MySQL)**: The database is separated into dedicated servers, with Master-Slave replication to handle increased traffic.
+
+### Explanation of Scaling:
+- **Clustered Load Balancers**: By clustering two load balancers, the infrastructure becomes more resilient to failure, as traffic will still be routed even if one load balancer goes down.
+- **Separation of Concerns**: By separating the web, application, and database layers into distinct servers, each can be scaled independently to handle increased load. This also allows for better resource management and performance tuning.
+
+## Scaling Strategy:
+Additional web servers, application servers, and database replicas can be added as needed. The load balancer ensures traffic is evenly distributed across all servers.

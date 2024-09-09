@@ -1,0 +1,21 @@
+# Distributed Web Infrastructure
+
+## Diagram
+![Distributed Web Infrastructure](./pictures/distributed_web_infrastructure_load_balancer.jpg)
+
+## Explanation
+This infrastructure includes multiple servers to improve redundancy and scalability. A load balancer (HAProxy) distributes traffic between the web server and the application server. The MySQL database is configured with Master-Slave replication for better fault tolerance.
+
+### Components:
+- **Load Balancer (HAProxy)**: Distributes incoming traffic between the web and application servers.
+- **Web Server (Nginx)**: Serves static content and forwards dynamic requests to the application server.
+- **Application Server**: Processes application logic and interacts with the database.
+- **Database (MySQL)**: Set up with Master-Slave replication. The Master handles write requests, while the Slave handles read requests.
+
+### Issues:
+- **SPOF (Single Point of Failure)**: If the load balancer fails, the entire infrastructure becomes unavailable.
+- **Security Concerns**: There are no firewalls or HTTPS to secure the communication.
+- **No Monitoring**: No system in place to monitor the performance and availability of the servers.
+
+## Load Balancer Configuration
+The load balancer uses the **round-robin** algorithm to distribute traffic evenly across the servers. The infrastructure can scale horizontally by adding more servers behind the load balancer.

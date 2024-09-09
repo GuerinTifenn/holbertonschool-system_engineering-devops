@@ -1,0 +1,20 @@
+# Secured and Monitored Web Infrastructure
+
+## Diagram
+![Secured and Monitored Web Infrastructure](./pictures/secured_web_infrastructure_firewall_ssl_monitoring.jpg)
+
+## Explanation
+This infrastructure builds on the previous distributed infrastructure by adding security and monitoring features. Firewalls are configured to protect each server, HTTPS is enabled via SSL certificates, and monitoring tools are used to track performance.
+
+### Components:
+- **Firewalls**: Installed on each server to restrict incoming and outgoing traffic based on predefined security rules.
+- **SSL Certificate**: Enables HTTPS to encrypt communication between users and the server.
+- **Monitoring Tools**: Track server performance, detect anomalies, and send alerts when thresholds are exceeded (e.g., Sumologic or Prometheus).
+
+### Issues:
+- **SSL Termination at the Load Balancer**: Terminating SSL at the load balancer could expose unencrypted traffic between the load balancer and backend servers.
+- **Single Writeable MySQL Instance**: Only one MySQL server can handle write requests, which could become a bottleneck under heavy load.
+- **Same Components on All Servers**: Having all servers configured with the same components (web server, application server, database) might lead to inefficient resource use.
+
+## Monitoring
+Monitoring tools are used to collect data on **queries per second (QPS)**, server uptime, and other critical metrics. These tools help prevent outages by sending alerts when performance drops or components fail.

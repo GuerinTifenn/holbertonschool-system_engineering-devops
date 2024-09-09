@@ -1,0 +1,20 @@
+# Simple Web Stack
+
+## Diagram
+![Simple Web Stack](./pictures/LAMP.png)
+
+## Explanation
+This infrastructure consists of a single server that hosts the web server (Nginx), the application, and the MySQL database. The domain `foobar.com` is configured with a DNS record pointing to the server's IP address (`8.8.8.8`).
+
+### Components:
+- **Web server (Nginx)**: Handles HTTP requests from users.
+- **Application server**: Runs the application code.
+- **Database (MySQL)**: Stores the application's data.
+
+### Issues:
+- **SPOF**: If the server fails, the entire website becomes inaccessible.
+- **Downtime during maintenance**: Restarting the server or deploying new code can cause temporary downtime.
+- **Scalability**: One server may not be able to handle heavy traffic, making it difficult to scale.
+
+## Communication
+Users connect to the website via the domain `foobar.com`, which is resolved by DNS to the server's IP address, and the server responds to HTTP requests over TCP/IP.
